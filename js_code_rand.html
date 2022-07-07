@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS CODE Rand</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap">
+	<style type="text/css">
+		* {
+			font-family: 'Source Code Pro';
+			font-size: 14px;
+			box-sizing: border-box;
+		}
+		body {
+			padding: 0;
+			margin: 0;
+			background: rgb(239, 239, 231);
+		}
+
+		main {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: center;
+			align-items: stretch;
+			padding: 5px;
+		}
+
+		h3 {
+			background: rgba(203, 201, 193, 0.5);
+			border-radius: 5px;
+			padding: 10px;
+			margin: 0;
+		}
+
+		section {
+			flex: 1 1 30%;
+			width: 100%;
+			padding: 10px;
+			margin: 5px;
+			border: 1px solid #E2E0D8;
+			border-radius: 5px;
+			background: #FCFCFA;
+		}
+
+		@media (max-width: 900px) {
+			main {
+				flex-direction: column;
+				align-items: center;
+				padding: 5px 15px 5px 5px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<main>
+		
+		<section>
+			<h3>Code JS</h3>
+			<p style="text-align: center;" id="jsid"></p>
+		</section>
+
+	</main>
+
+	<script type="text/javascript">
+		const existingIDs = ['AAA1111','XYA1234'];
+		const getRandomLetters = (length = 1) => Array(length).fill().map(e => String.fromCharCode(Math.floor(Math.random() * 26) + 65)).join('');
+		const getRandomDigits = (length = 1) => Array(length).fill().map(e => Math.floor(Math.random() * 10)).join('');
+		const generateUniqueID = () => {
+			let id = getRandomDigits(2) + getRandomLetters(3) + getRandomDigits(4);
+			while (existingIDs.includes(id)) id = getRandomDigits(2) + getRandomLetters(3) + getRandomDigits(4);
+			return id;
+		};
+		const newID = generateUniqueID();
+		const parID = document.getElementById('jsid');
+		parID.innerHTML = newID;
+	</script>
+
+</body>
+</html>
